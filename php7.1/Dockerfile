@@ -29,6 +29,7 @@ RUN docker-php-ext-configure gd --with-freetype-dir=/usr
 RUN docker-php-ext-install gd exif pdo curl dom pdo_mysql iconv intl mcrypt hash phar session snmp sockets 
 RUN docker-php-ext-install xml
 RUN docker-php-ext-install xmlrpc xmlwriter xsl zip
+RUN docker-php-ext-install soap
 
 RUN pecl install xdebug
 RUN docker-php-ext-enable xdebug

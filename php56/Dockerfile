@@ -26,6 +26,8 @@ RUN apt-get -y --no-install-recommends install ssmtp
 RUN apt-get -y --no-install-recommends install wkhtmltopdf
 RUN apt-get -y --no-install-recommends install libxslt-dev
 RUN apt-get -y --no-install-recommends install zlib1g-dev
+RUN apt-get -y --no-install-recommends install libjpeg-dev
+RUN apt-get -y --no-install-recommends install libfreetype6-dev
 
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
 RUN docker-php-ext-install imap

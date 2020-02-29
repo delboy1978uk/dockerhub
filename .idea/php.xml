@@ -17,4 +17,10 @@
       <path value="/usr/share/pear" />
     </include_path>
   </component>
+  <component name="PhpUnit">
+    <phpunit_settings>
+      <PhpUnitSettings load_method="PHPUNIT_PHAR" custom_loader_path="" phpunit_phar_path="" />
+      <phpunit_by_interpreter interpreter_id="37a3eb6c-c904-4801-bfe5-24c0fda86a16" interpreter_name="Remote PHP 5.6" custom_loader_path="vendor/autoload.php" phpunit_phar_path="" />
+    </phpunit_settings>
+  </component>
 </project>

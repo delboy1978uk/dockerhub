@@ -4,33 +4,11 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
 RUN apt-get -y upgrade
-RUN apt-get -y --no-install-recommends install apt-utils
-RUN apt-get -y --no-install-recommends install g++
-RUN apt-get -y --no-install-recommends install imagemagick
-RUN apt-get -y --no-install-recommends install libc-client-dev
-RUN apt-get -y --no-install-recommends install libcurl4-openssl-dev
-RUN apt-get -y --no-install-recommends install libfreetype6-dev
-RUN apt-get -y --no-install-recommends install libgd-dev
-RUN apt-get -y --no-install-recommends install libicu-dev
-RUN apt-get -y --no-install-recommends install libkrb5-dev
-RUN apt-get -y --no-install-recommends install libmcrypt-dev
-RUN apt-get -y --no-install-recommends install libpng-dev
-RUN apt-get -y --no-install-recommends install libxml2-dev
-RUN apt-get -y --no-install-recommends install libsnmp-dev
-RUN apt-get -y --no-install-recommends install openssl
-RUN apt-get -y --no-install-recommends install snmp
-RUN apt-get -y --no-install-recommends install wkhtmltopdf
-RUN apt-get -y --no-install-recommends install libxslt-dev
-RUN apt-get -y --no-install-recommends install zlib1g-dev
-RUN apt-get -y --no-install-recommends install libjpeg-dev
-RUN apt-get -y --no-install-recommends install libfreetype6-dev
-RUN apt-get -y --no-install-recommends install libmagickwand-dev
-RUN apt-get -y --no-install-recommends install libmagickcore-dev
-RUN apt-get -y --no-install-recommends install libsodium-dev
-RUN apt-get -y --no-install-recommends install libzip-dev
-RUN apt-get -y --no-install-recommends install libgmp-dev
-RUN apt-get -y --no-install-recommends install unzip
-RUN apt-get -y --no-install-recommends install libwebp-dev
+RUN apt-get -y --no-install-recommends install apt-utils g++ imagemagick libc-client-dev
+RUN apt-get -y --no-install-recommends install libcurl4-openssl-dev libfreetype6-dev libgd-dev libicu-dev libkrb5-dev
+RUN apt-get -y --no-install-recommends install libmcrypt-dev libpng-dev libxml2-dev libsnmp-dev openssl snmp wkhtmltopdf
+RUN apt-get -y --no-install-recommends install libxslt-dev zlib1g-dev libjpeg-dev libfreetype6-dev libmagickwand-dev
+RUN apt-get -y --no-install-recommends install libmagickcore-dev libsodium-dev libzip-dev libgmp-dev unzip libwebp-dev
 
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
 RUN docker-php-ext-install imap
@@ -50,8 +28,4 @@ RUN rm composer-setup.php
 RUN mv ./composer /usr/bin/composer
 
 RUN apt-get clean
-RUN rm -rf /tmp/*
-RUN rm -rf /var/tmp/*
-RUN rm -rf /usr/share/doc/*
-
-#COPY ./php.ini /usr/local/etc/php/php.ini
+RUN rm -rf /tmp/* /var/tmp/* /usr/share/doc/*

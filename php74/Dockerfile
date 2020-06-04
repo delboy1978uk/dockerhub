@@ -3,6 +3,7 @@ FROM php:7.4-fpm
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
+RUN apt-get -y upgrade
 RUN apt-get -y --no-install-recommends install apt-utils
 RUN apt-get -y --no-install-recommends install g++
 RUN apt-get -y --no-install-recommends install imagemagick
@@ -28,22 +29,14 @@ RUN apt-get -y --no-install-recommends install libmagickcore-dev
 RUN apt-get -y --no-install-recommends install libsodium-dev
 RUN apt-get -y --no-install-recommends install libzip-dev
 RUN apt-get -y --no-install-recommends install libgmp-dev
-
+RUN apt-get -y --no-install-recommends install unzip
+RUN apt-get -y --no-install-recommends install libwebp-dev
 
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
 RUN docker-php-ext-install imap
 RUN pecl install imagick
-RUN docker-php-ext-install exif
-RUN docker-php-ext-install pdo
-RUN docker-php-ext-install curl
-RUN docker-php-ext-install dom
-RUN docker-php-ext-install pdo_mysql
-RUN docker-php-ext-install iconv
-RUN docker-php-ext-install intl
-RUN docker-php-ext-install sodium
-RUN docker-php-ext-install phar
-RUN docker-php-ext-install snmp sockets session
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg
+RUN docker-php-ext-install exif pdo curl dom pdo_mysql iconv intl sodium phar snmp sockets session
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg  --with-webp
 RUN docker-php-ext-install gd
 RUN docker-php-ext-install xml xmlrpc xsl xmlwriter zip  xmlrpc soap bcmath
 RUN docker-php-ext-configure gmp
@@ -53,12 +46,12 @@ RUN docker-php-ext-enable xdebug
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --filename=composer
-RUN php -r "unlink('composer-setup.php');"
+RUN rm composer-setup.php
 RUN mv ./composer /usr/bin/composer
 
 RUN apt-get clean
-#RUN rm -rf /tmp/*
-#RUN rm -rf /var/tmp/*
-#RUN rm -rf /usr/share/doc/*
+RUN rm -rf /tmp/*
+RUN rm -rf /var/tmp/*
+RUN rm -rf /usr/share/doc/*
 
 #COPY ./php.ini /usr/local/etc/php/php.ini

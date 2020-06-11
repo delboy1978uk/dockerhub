@@ -16,7 +16,7 @@ RUN pecl install imagick
 RUN docker-php-ext-install exif pdo curl dom pdo_mysql iconv intl sodium phar snmp sockets session
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg  --with-webp
 RUN docker-php-ext-install gd
-RUN docker-php-ext-install xml xmlrpc xsl xmlwriter zip  xmlrpc soap bcmath
+RUN docker-php-ext-install xml xmlrpc xsl xmlwriter zip  xmlrpc soap bcmath mysqli
 RUN docker-php-ext-configure gmp
 RUN docker-php-ext-install gmp
 RUN pecl -d preferred_state=beta install xdebug

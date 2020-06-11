@@ -26,6 +26,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --filename=composer
 RUN rm composer-setup.php
 RUN mv ./composer /usr/bin/composer
+RUN chown -R 1000:staff /.composer
 
 RUN apt-get clean
 RUN rm -rf /tmp/* /var/tmp/* /usr/share/doc/*

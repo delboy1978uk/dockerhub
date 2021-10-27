@@ -13,7 +13,7 @@ RUN apt-get -y --no-install-recommends install libmagickcore-dev
 
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
 RUN docker-php-ext-install imap
-#RUN pecl install imagick
+RUN pecl install imagick
 RUN docker-php-ext-install exif pdo curl dom pdo_mysql iconv intl sodium phar snmp sockets session
 RUN docker-php-ext-configure gd --with-freetype --with-jpeg  --with-webp
 RUN docker-php-ext-install gd

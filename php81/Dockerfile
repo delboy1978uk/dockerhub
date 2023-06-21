@@ -10,6 +10,7 @@ RUN apt-get -y --no-install-recommends install libmcrypt-dev libpng-dev libxml2-
 RUN apt-get -y --no-install-recommends install libxslt-dev zlib1g-dev libjpeg-dev libfreetype6-dev libmagickwand-dev
 RUN apt-get -y --no-install-recommends install libsodium-dev libzip-dev libgmp-dev unzip libwebp-dev
 RUN apt-get -y --no-install-recommends install libmagickcore-dev libyaml-dev
+RUN apt-get -y --no-install-recommends install git ca-certificates
 
 RUN docker-php-ext-configure imap --with-kerberos --with-imap-ssl
 RUN docker-php-ext-install imap

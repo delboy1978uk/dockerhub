@@ -19,8 +19,8 @@ RUN docker-php-ext-install gd
 RUN docker-php-ext-install xml xmlrpc xsl xmlwriter zip  xmlrpc soap bcmath mysqli
 RUN docker-php-ext-configure gmp
 RUN docker-php-ext-install gmp
-RUN pecl -d preferred_state=beta install xdebug
-RUN docker-php-ext-enable xdebug-3.1.5
+RUN pecl -d preferred_state=beta install xdebug-3.1.5
+RUN docker-php-ext-enable xdebug
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --filename=composer

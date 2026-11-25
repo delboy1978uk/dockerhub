@@ -22,6 +22,7 @@ RUN pecl install imap
 RUN pecl install xdebug
 RUN pecl install yaml
 RUN docker-php-ext-enable xdebug imagick yaml imap
+RUN pecl install redis-6.3.0 && docker-php-ext-enable redis
 RUN #docker-php-ext-install phar
 RUN apt-get clean
 RUN rm -rf /tmp/* /var/tmp/* /usr/share/doc/*

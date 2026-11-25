@@ -2,6 +2,8 @@ FROM php:7.4-fpm
 
 ENV DEBIAN_FRONTEND noninteractive
 
+# PHP 7.4 images are Debian 11 (bullseye), which has moved to archive.debian.org
+RUN sed -i -e 's|deb.debian.org|archive.debian.org|g' /etc/apt/sources.list
 RUN apt-get update
 RUN apt-get -y upgrade
 RUN apt-get -y --no-install-recommends install apt-utils g++ imagemagick libc-client-dev
@@ -20,7 +22,8 @@ RUN docker-php-ext-install xml xmlrpc xsl xmlwriter zip  xmlrpc soap bcmath mysq
 RUN docker-php-ext-configure gmp
 RUN docker-php-ext-install gmp
 RUN pecl -d preferred_state=beta install xdebug-3.1.5
-RUN docker-php-ext-enable xdebug
+RUN docker-php-ext-enable xdebug imagick
+RUN pecl install redis-6.3.0 && docker-php-ext-enable redis
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php --filename=composer
